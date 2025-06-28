@@ -4,7 +4,7 @@
 **Goal:** Basic multiplayer functionality with simple task system
 
 ### Core Features
-- [ ] NX monorepo setup with basic apps/libs structure
+- [x] NX monorepo setup with basic apps/libs structure
 - [ ] Socket.io server with room management (4-10 players)
 - [ ] Basic Phaser 3 client with player movement
 - [ ] Simple lobby system (join/leave rooms)

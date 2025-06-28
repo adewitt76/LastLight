@@ -1,1 +1,2440 @@
-{}
+{
+  "game-client": {
+    "root": [
+      "game-client/package.json",
+      "nx/core/package-json"
+    ],
+    "projectType": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets": [
+      "game-client/tsconfig.app.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "game-client/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.options": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.cache": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.dependsOn": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.inputs": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.outputs": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.syncGenerators": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.options.cwd": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.options.args": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.options.command": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.continuous": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.options": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.metadata": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.syncGenerators": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.executor": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.options.cwd": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.options.args": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.options.command": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.metadata.technologies": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.metadata.technologies.0": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.metadata.description": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.metadata.help": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.metadata.help.command": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.metadata.help.example": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.syncGenerators": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static.continuous": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static.dependsOn": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static.executor": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static.options": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static.syncGenerators": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static.options.buildTarget": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static.options.spa": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "game-client/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.test": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.cache": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.inputs": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.outputs": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.executor": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.cwd": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.env": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.command": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies.0": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.description": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.command": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.example": [
+      "game-client/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "name": [
+      "game-client/package.json",
+      "nx/core/package-json"
+    ],
+    "tags": [
+      "game-client/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "game-client/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "game-client/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "game-client/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "game-client/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "game-client/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "game-server": {
+    "root": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "projectType": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets": [
+      "game-server/tsconfig.app.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "game-server/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.options": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.cache": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.dependsOn": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.inputs": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.outputs": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.syncGenerators": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.options.cwd": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.options.args": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.options.command": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.syncGenerators": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "game-server/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.test": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.options": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.metadata": [
+      "game-server/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.cache": [
+      "game-server/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.inputs": [
+      "game-server/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.outputs": [
+      "game-server/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.executor": [
+      "game-server/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.cwd": [
+      "game-server/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.env": [
+      "game-server/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.command": [
+      "game-server/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies": [
+      "game-server/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies.0": [
+      "game-server/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.description": [
+      "game-server/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help": [
+      "game-server/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.command": [
+      "game-server/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.example": [
+      "game-server/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "name": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "tags": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.serve": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.serve.continuous": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.serve.executor": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.serve.dependsOn": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.serve.options": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.serve.configurations": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.serve.configurations.development": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.serve.configurations.production": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "game-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "libs/shared/game-engine": {
+    "root": [
+      "libs/shared/game-engine/package.json",
+      "nx/core/package-json"
+    ],
+    "projectType": [
+      "libs/shared/game-engine/tsconfig.spec.json",
+      "@nx/js/typescript"
+    ],
+    "targets": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "libs/shared/game-engine/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.dependsOn": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.options": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.cache": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.inputs": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.outputs": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.syncGenerators": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.executor": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.options.cwd": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.options.command": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.technologies": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.description": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.help": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.help.command": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.help.example": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build-deps": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build-deps.dependsOn": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.continuous": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.executor": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.options": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.options.command": [
+      "libs/shared/game-engine/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.test": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.cache": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.inputs": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.outputs": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.executor": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.cwd": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.env": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.command": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies.0": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.description": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.command": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.example": [
+      "libs/shared/game-engine/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "name": [
+      "libs/shared/game-engine/package.json",
+      "nx/core/package-json"
+    ],
+    "tags": [
+      "libs/shared/game-engine/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "libs/shared/game-engine/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "libs/shared/game-engine/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "libs/shared/game-engine/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "libs/shared/game-engine/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "libs/shared/game-engine/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "libs/shared/game-engine/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "libs/shared/game-engine/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "libs/shared/models": {
+    "root": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "projectType": [
+      "libs/shared/models/tsconfig.spec.json",
+      "@nx/js/typescript"
+    ],
+    "targets": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "libs/shared/models/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.dependsOn": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.options": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.cache": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.inputs": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.outputs": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.syncGenerators": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.executor": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.options.cwd": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.options.command": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.technologies": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.description": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.help": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.help.command": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.help.example": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build-deps": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build-deps.dependsOn": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.continuous": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.executor": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.options": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.options.command": [
+      "libs/shared/models/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.test": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.cache": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.inputs": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.outputs": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.executor": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.cwd": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.env": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.command": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies.0": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.description": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.command": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.example": [
+      "libs/shared/models/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "name": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "tags": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "libs/shared/networking": {
+    "root": [
+      "libs/shared/networking/package.json",
+      "nx/core/package-json"
+    ],
+    "projectType": [
+      "libs/shared/networking/tsconfig.spec.json",
+      "@nx/js/typescript"
+    ],
+    "targets": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "libs/shared/networking/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.dependsOn": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.options": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.cache": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.inputs": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.outputs": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.syncGenerators": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.executor": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.options.cwd": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.options.command": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.technologies": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.description": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.help": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.help.command": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.help.example": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build-deps": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build-deps.dependsOn": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.continuous": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.executor": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.options": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.options.command": [
+      "libs/shared/networking/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.test": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.cache": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.inputs": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.outputs": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.executor": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.cwd": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.env": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.command": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies.0": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.description": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.command": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.example": [
+      "libs/shared/networking/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "name": [
+      "libs/shared/networking/package.json",
+      "nx/core/package-json"
+    ],
+    "tags": [
+      "libs/shared/networking/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "libs/shared/networking/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "libs/shared/networking/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "libs/shared/networking/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "libs/shared/networking/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "libs/shared/networking/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "libs/shared/networking/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "libs/shared/networking/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "libs/shared/utils": {
+    "root": [
+      "libs/shared/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "projectType": [
+      "libs/shared/utils/tsconfig.spec.json",
+      "@nx/js/typescript"
+    ],
+    "targets": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "libs/shared/utils/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.dependsOn": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.options": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.cache": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.inputs": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.outputs": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.syncGenerators": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.executor": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.options.cwd": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.options.command": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.technologies": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.description": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.help": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.help.command": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build.metadata.help.example": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build-deps": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build-deps.dependsOn": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.continuous": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.executor": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.options": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.watch-deps.options.command": [
+      "libs/shared/utils/tsconfig.lib.json",
+      "@nx/js/typescript"
+    ],
+    "targets.test": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.cache": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.inputs": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.outputs": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.executor": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.cwd": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.env": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.command": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies.0": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.description": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.command": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.example": [
+      "libs/shared/utils/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "name": [
+      "libs/shared/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "tags": [
+      "libs/shared/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "libs/shared/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "libs/shared/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "libs/shared/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "libs/shared/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "libs/shared/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "libs/shared/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "libs/shared/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "lobby-web": {
+    "root": [
+      "lobby-web/package.json",
+      "nx/core/package-json"
+    ],
+    "projectType": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets": [
+      "lobby-web/tsconfig.app.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "lobby-web/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.build": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.options": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.cache": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.dependsOn": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.inputs": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.outputs": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.syncGenerators": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.executor": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.options.cwd": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.options.args": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.options.command": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.technologies.0": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.description": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.command": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build.metadata.help.example": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.continuous": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.options": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.metadata": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.syncGenerators": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.executor": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.options.cwd": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.options.args": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.options.command": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.metadata.technologies": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.metadata.technologies.0": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.metadata.description": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.metadata.help": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.metadata.help.command": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve.metadata.help.example": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.continuous": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.syncGenerators": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.executor": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.cwd": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.args": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.options.command": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.technologies.0": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.description": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.command": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.preview.metadata.help.example": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static.continuous": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static.dependsOn": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static.executor": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static.options": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static.syncGenerators": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static.options.buildTarget": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.serve-static.options.spa": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.build-deps.dependsOn": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "lobby-web/webpack.config.js",
+      "@nx/webpack/plugin"
+    ],
+    "targets.test": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.cache": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.inputs": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.outputs": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.executor": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.cwd": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.env": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.command": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies.0": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.description": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.command": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.example": [
+      "lobby-web/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "name": [
+      "lobby-web/package.json",
+      "nx/core/package-json"
+    ],
+    "tags": [
+      "lobby-web/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "lobby-web/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "lobby-web/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "lobby-web/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "lobby-web/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "lobby-web/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  }
+}

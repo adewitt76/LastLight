@@ -52,7 +52,56 @@ See [GAME_PLAN.md](./GAME_PLAN.md) for detailed roadmap.
 
 ## 🚀 Getting Started
 
-*Setup instructions will be added as the project structure is established*
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+```bash
+# Clone the repository
+git clone git@github.com:adewitt76/LastLight.git
+cd LastLight
+
+# Install dependencies
+npm install
+```
+
+### Development
+
+Start individual applications:
+
+```bash
+# Start the game client (Phaser 3 frontend)
+npx nx serve game-client
+
+# Start the game server (Socket.io backend)
+npx nx serve game-server
+
+# Start the lobby web interface
+npx nx serve lobby-web
+```
+
+Build applications:
+
+```bash
+# Build specific app
+npx nx build game-client
+npx nx build game-server
+npx nx build lobby-web
+
+# Build all apps
+npx nx run-many -t build
+```
+
+Run tests:
+
+```bash
+# Test specific project
+npx nx test game-client
+
+# Test all projects
+npx nx run-many -t test
+```
 
 ## 🎮 What Makes This Unique
 

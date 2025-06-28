@@ -69,7 +69,29 @@ libs/
 
 ## Development Commands
 
-*Commands will be added as the project structure is established*
+```bash
+# Install dependencies
+npm install
+
+# Start applications
+npx nx serve game-client    # Phaser 3 game client
+npx nx serve game-server    # Socket.io backend server  
+npx nx serve lobby-web      # Web lobby interface
+
+# Build applications
+npx nx build game-client
+npx nx build game-server
+npx nx build lobby-web
+npx nx run-many -t build    # Build all
+
+# Run tests
+npx nx test game-client
+npx nx run-many -t test     # Test all
+
+# Lint and typecheck
+npx nx run-many -t lint
+npx nx run-many -t typecheck
+```
 
 ## Game Development Priorities
 

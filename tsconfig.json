@@ -2,5 +2,27 @@
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./game-client"
+    },
+    {
+      "path": "./game-server"
+    },
+    {
+      "path": "./lobby-web"
+    },
+    {
+      "path": "./libs/shared/game-engine"
+    },
+    {
+      "path": "./libs/shared/models"
+    },
+    {
+      "path": "./libs/shared/networking"
+    },
+    {
+      "path": "./libs/shared/utils"
+    }
+  ]
 }

@@ -2,38 +2,465 @@
   "version": "6.0",
   "nxVersion": "21.2.1",
   "pathMappings": {},
-  "nxJsonPlugins": [],
+  "nxJsonPlugins": [
+    {
+      "name": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        },
+        "build": {
+          "targetName": "build",
+          "configName": "tsconfig.lib.json",
+          "buildDepsName": "build-deps",
+          "watchDepsName": "watch-deps"
+        }
+      }
+    },
+    {
+      "name": "@nx/webpack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
+    },
+    {
+      "name": "@nx/jest/plugin",
+      "options": {
+        "targetName": "test"
+      }
+    }
+  ],
   "fileMap": {
-    "projectFileMap": {},
     "nonProjectFiles": [
       {
         "file": ".gitignore",
-        "hash": "18435103667633526488"
+        "hash": "5902911438487888765"
       },
       {
         "file": ".vscode/extensions.json",
-        "hash": "5673190821613406900"
+        "hash": "15381481472087481057"
+      },
+      {
+        "file": "CLAUDE.md",
+        "hash": "7372100949279732202"
+      },
+      {
+        "file": "GAME_PLAN.md",
+        "hash": "8975509226577094444"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "12469082852547493498"
       },
       {
         "file": "README.md",
-        "hash": "6623332451826432553"
+        "hash": "14536929409244928253"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "14236175072743533737"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "13737983450217408137"
       },
       {
         "file": "nx.json",
-        "hash": "14977852485590650733"
+        "hash": "15571989427001305911"
       },
       {
         "file": "package-lock.json",
-        "hash": "13410393088079157761"
+        "hash": "8549906635909293362"
       },
       {
         "file": "package.json",
-        "hash": "13420295487980978088"
+        "hash": "14626886694329970807"
       },
       {
         "file": "packages/.gitkeep",
         "hash": "3244421341483603138"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "8900268571896142108"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "12832492113502455817"
       }
-    ]
+    ],
+    "projectFileMap": {
+      "@lastlight/shared-models": [
+        {
+          "file": "libs/shared/models/.spec.swcrc",
+          "hash": "18201067170784284381"
+        },
+        {
+          "file": "libs/shared/models/README.md",
+          "hash": "17799089924132604789"
+        },
+        {
+          "file": "libs/shared/models/jest.config.ts",
+          "hash": "10557925287102470377"
+        },
+        {
+          "file": "libs/shared/models/package.json",
+          "hash": "3434021072998345237",
+          "deps": [
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/shared/models/src/index.ts",
+          "hash": "2363507496233999047"
+        },
+        {
+          "file": "libs/shared/models/src/lib/models.spec.ts",
+          "hash": "4643871614366493314"
+        },
+        {
+          "file": "libs/shared/models/src/lib/models.ts",
+          "hash": "13522761443588667083"
+        },
+        {
+          "file": "libs/shared/models/tsconfig.json",
+          "hash": "14186287857387999199"
+        },
+        {
+          "file": "libs/shared/models/tsconfig.lib.json",
+          "hash": "2482107884926405878"
+        },
+        {
+          "file": "libs/shared/models/tsconfig.spec.json",
+          "hash": "6108658156092555330"
+        }
+      ],
+      "@lastlight/shared-networking": [
+        {
+          "file": "libs/shared/networking/.spec.swcrc",
+          "hash": "18201067170784284381"
+        },
+        {
+          "file": "libs/shared/networking/README.md",
+          "hash": "3050524338265733164"
+        },
+        {
+          "file": "libs/shared/networking/jest.config.ts",
+          "hash": "17345352681876112181"
+        },
+        {
+          "file": "libs/shared/networking/package.json",
+          "hash": "3894001928586465266",
+          "deps": [
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/shared/networking/src/index.ts",
+          "hash": "2215198722417361211"
+        },
+        {
+          "file": "libs/shared/networking/src/lib/networking.spec.ts",
+          "hash": "13002086329857147000"
+        },
+        {
+          "file": "libs/shared/networking/src/lib/networking.ts",
+          "hash": "12415066848175296779"
+        },
+        {
+          "file": "libs/shared/networking/tsconfig.json",
+          "hash": "14186287857387999199"
+        },
+        {
+          "file": "libs/shared/networking/tsconfig.lib.json",
+          "hash": "2482107884926405878"
+        },
+        {
+          "file": "libs/shared/networking/tsconfig.spec.json",
+          "hash": "6108658156092555330"
+        }
+      ],
+      "@./game-server": [
+        {
+          "file": "game-server/.spec.swcrc",
+          "hash": "18201067170784284381"
+        },
+        {
+          "file": "game-server/jest.config.ts",
+          "hash": "12138488252927325220"
+        },
+        {
+          "file": "game-server/package.json",
+          "hash": "12897161438638446291"
+        },
+        {
+          "file": "game-server/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "game-server/src/main.ts",
+          "hash": "12913629557067508320"
+        },
+        {
+          "file": "game-server/tsconfig.app.json",
+          "hash": "1812535311003909434"
+        },
+        {
+          "file": "game-server/tsconfig.json",
+          "hash": "6803799812066263642"
+        },
+        {
+          "file": "game-server/tsconfig.spec.json",
+          "hash": "1517134778813433259"
+        },
+        {
+          "file": "game-server/webpack.config.js",
+          "hash": "8354317366887649689",
+          "deps": [
+            "npm:@nx/webpack"
+          ]
+        }
+      ],
+      "@lastlight/shared-game-engine": [
+        {
+          "file": "libs/shared/game-engine/.spec.swcrc",
+          "hash": "18201067170784284381"
+        },
+        {
+          "file": "libs/shared/game-engine/README.md",
+          "hash": "6696201745822982737"
+        },
+        {
+          "file": "libs/shared/game-engine/jest.config.ts",
+          "hash": "8317709867087435617"
+        },
+        {
+          "file": "libs/shared/game-engine/package.json",
+          "hash": "13710636473037288043",
+          "deps": [
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/shared/game-engine/src/index.ts",
+          "hash": "16588836501238008290"
+        },
+        {
+          "file": "libs/shared/game-engine/src/lib/game-engine.spec.ts",
+          "hash": "9601868425077397572"
+        },
+        {
+          "file": "libs/shared/game-engine/src/lib/game-engine.ts",
+          "hash": "12357312073489817841"
+        },
+        {
+          "file": "libs/shared/game-engine/tsconfig.json",
+          "hash": "14186287857387999199"
+        },
+        {
+          "file": "libs/shared/game-engine/tsconfig.lib.json",
+          "hash": "2482107884926405878"
+        },
+        {
+          "file": "libs/shared/game-engine/tsconfig.spec.json",
+          "hash": "6108658156092555330"
+        }
+      ],
+      "@./game-client": [
+        {
+          "file": "game-client/.spec.swcrc",
+          "hash": "18201067170784284381"
+        },
+        {
+          "file": "game-client/.swcrc",
+          "hash": "9921579498929141427"
+        },
+        {
+          "file": "game-client/jest.config.ts",
+          "hash": "1403421579030690175"
+        },
+        {
+          "file": "game-client/package.json",
+          "hash": "10316242828241954981"
+        },
+        {
+          "file": "game-client/src/app/app.element.css",
+          "hash": "2014757848005459412"
+        },
+        {
+          "file": "game-client/src/app/app.element.spec.ts",
+          "hash": "3023763616587585076"
+        },
+        {
+          "file": "game-client/src/app/app.element.ts",
+          "hash": "17696804522714342834"
+        },
+        {
+          "file": "game-client/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "game-client/src/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "game-client/src/index.html",
+          "hash": "1910286369185465835"
+        },
+        {
+          "file": "game-client/src/main.ts",
+          "hash": "466268443977743393"
+        },
+        {
+          "file": "game-client/src/styles.css",
+          "hash": "5195668842064076916"
+        },
+        {
+          "file": "game-client/src/test-setup.ts",
+          "hash": "4055606894390288348"
+        },
+        {
+          "file": "game-client/tsconfig.app.json",
+          "hash": "7671749529550772728"
+        },
+        {
+          "file": "game-client/tsconfig.json",
+          "hash": "6803799812066263642"
+        },
+        {
+          "file": "game-client/tsconfig.spec.json",
+          "hash": "204832380175698195"
+        },
+        {
+          "file": "game-client/webpack.config.js",
+          "hash": "4577413601911154895",
+          "deps": [
+            "npm:@nx/webpack"
+          ]
+        }
+      ],
+      "@lastlight/shared-utils": [
+        {
+          "file": "libs/shared/utils/.spec.swcrc",
+          "hash": "18201067170784284381"
+        },
+        {
+          "file": "libs/shared/utils/README.md",
+          "hash": "3816604565008484386"
+        },
+        {
+          "file": "libs/shared/utils/jest.config.ts",
+          "hash": "8802162407169857264"
+        },
+        {
+          "file": "libs/shared/utils/package.json",
+          "hash": "3894780440969217837",
+          "deps": [
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/shared/utils/src/index.ts",
+          "hash": "1424520165591673030"
+        },
+        {
+          "file": "libs/shared/utils/src/lib/utils.spec.ts",
+          "hash": "5478421489844254378"
+        },
+        {
+          "file": "libs/shared/utils/src/lib/utils.ts",
+          "hash": "17287710670217841263"
+        },
+        {
+          "file": "libs/shared/utils/tsconfig.json",
+          "hash": "14186287857387999199"
+        },
+        {
+          "file": "libs/shared/utils/tsconfig.lib.json",
+          "hash": "2482107884926405878"
+        },
+        {
+          "file": "libs/shared/utils/tsconfig.spec.json",
+          "hash": "6108658156092555330"
+        }
+      ],
+      "@./lobby-web": [
+        {
+          "file": "lobby-web/.spec.swcrc",
+          "hash": "18201067170784284381"
+        },
+        {
+          "file": "lobby-web/.swcrc",
+          "hash": "9921579498929141427"
+        },
+        {
+          "file": "lobby-web/jest.config.ts",
+          "hash": "12223160414570075259"
+        },
+        {
+          "file": "lobby-web/package.json",
+          "hash": "353023962854724801"
+        },
+        {
+          "file": "lobby-web/src/app/app.element.css",
+          "hash": "2014757848005459412"
+        },
+        {
+          "file": "lobby-web/src/app/app.element.spec.ts",
+          "hash": "14922431508411266185"
+        },
+        {
+          "file": "lobby-web/src/app/app.element.ts",
+          "hash": "5359478038871124746"
+        },
+        {
+          "file": "lobby-web/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "lobby-web/src/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "lobby-web/src/index.html",
+          "hash": "13376759048809903252"
+        },
+        {
+          "file": "lobby-web/src/main.ts",
+          "hash": "466268443977743393"
+        },
+        {
+          "file": "lobby-web/src/styles.css",
+          "hash": "5195668842064076916"
+        },
+        {
+          "file": "lobby-web/src/test-setup.ts",
+          "hash": "4055606894390288348"
+        },
+        {
+          "file": "lobby-web/tsconfig.app.json",
+          "hash": "7671749529550772728"
+        },
+        {
+          "file": "lobby-web/tsconfig.json",
+          "hash": "6803799812066263642"
+        },
+        {
+          "file": "lobby-web/tsconfig.spec.json",
+          "hash": "204832380175698195"
+        },
+        {
+          "file": "lobby-web/webpack.config.js",
+          "hash": "4577413601911154895",
+          "deps": [
+            "npm:@nx/webpack"
+          ]
+        }
+      ]
+    }
   }
 }

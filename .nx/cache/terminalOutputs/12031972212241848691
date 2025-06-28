@@ -1,0 +1,14 @@
+> webpack-cli serve --node-env=development --port 4201
+
+<i> [1m[32m[webpack-dev-server] Project is running at:[39m[22m
+<i> [1m[32m[webpack-dev-server] Loopback: [36mhttp://localhost:4201/[39m, [36mhttp://[::1]:4201/[39m[39m[22m
+<i> [1m[32m[webpack-dev-server] On Your Network (IPv4): [36mhttp://192.168.1.233:4201/[39m[39m[22m
+<i> [1m[32m[webpack-dev-server] Content not from webpack is served from '[36m/home/aaron/Projects/LastLight/lobby-web/public[39m' directory[39m[22m
+Entrypoint [1mmain[39m[22m 198 KiB (225 KiB) = [1m[32mruntime.js[39m[22m 46.9 KiB [1m[32mvendor.js[39m[22m 121 KiB [1m[32mmain.css[39m[22m 11.3 KiB [1m[32mmain.js[39m[22m 19.3 KiB 4 auxiliary assets
+Entrypoint [1mstyles[39m[22m 169 KiB (190 KiB) = [1m[32mruntime.js[39m[22m 46.9 KiB [1m[32mstyles.css[39m[22m 119 bytes [1m[32mstyles.js[39m[22m 122 KiB 3 auxiliary assets
+chunk (runtime: runtime) [1m[32mmain.css[39m[22m, [1m[32mmain.js[39m[22m (main) 18.6 KiB (javascript) 11.3 KiB (css/mini-extract) [1m[33m[initial][39m[22m [1m[32m[rendered][39m[22m
+chunk (runtime: runtime) [1m[32mruntime.js[39m[22m (runtime) 31.7 KiB [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
+chunk (runtime: runtime) [1m[32mstyles.css[39m[22m, [1m[32mstyles.js[39m[22m (styles) 114 KiB (javascript) 80 bytes (css/mini-extract) [1m[33m[initial][39m[22m [1m[32m[rendered][39m[22m
+chunk (runtime: runtime) [1m[32mvendor.js[39m[22m (vendor) (id hint: vendor) 114 KiB [1m[33m[initial][39m[22m [1m[32m[rendered][39m[22m [1m[33msplit chunk (cache group: vendor) (name: vendor)[39m[22m
+webpack compiled [1m[32msuccessfully[39m[22m (7a4d4970b6bbc49b)
+^C<i> [1m[32m[webpack-dev-server] Gracefully shutting down. To force exit, press ^C again. Please wait...[39m[22m

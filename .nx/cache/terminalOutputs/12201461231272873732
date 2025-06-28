@@ -1,0 +1,27 @@
+[?25l
+[2m> [22m[2mnx run[22m @./game-server:build  [2m[existing outputs match the cache, left as is][22m
+
+> webpack-cli build --node-env=production
+
+chunk (runtime: main) [1m[32mmain.js[39m[22m (main) 105 bytes [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
+webpack compiled [1m[32msuccessfully[39m[22m (fcbfe0a6162869ea)
+[0K
+[2m[32m—————————————————————————————————————————————————————————————————————————————————————————————[39m[22m[0K
+[0K
+[0m[7m[1m[32m NX [39m[22m[27m[0m  [32mSuccessfully ran target [1mbuild[22m for project @./game-server[39m[2m (21ms)[22m[0K
+[2m[22m
+[2mNx read the output from the cache instead of running the command for 1 out of 1 tasks.[22m[0K
+[0K
+[0J[?25h[?25h[?25h[1m[31mDebugger listening on ws://localhost:3000/044b2826-7ca3-4d5c-99f7-5473a6eb3703[39m[22m
+[1m[31mDebugger listening on ws://localhost:3000/044b2826-7ca3-4d5c-99f7-5473a6eb3703[39m[22m
+[1m[31mFor help, see: https://nodejs.org/en/docs/inspector[39m[22m
+[1m[31m[39m[22m
+Hello World
+
+[7m[1m[36m NX [39m[22m[27m [1mProcess exited with code 0, waiting for changes to restart...[22m
+
+l hello
+/exit
+exit
+.exit
+[1m[31mWatch error: Daemon closed the connection[39m[22m

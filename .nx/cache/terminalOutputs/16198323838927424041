@@ -1,0 +1,46 @@
+> webpack-cli build --node-env=production
+
+[webpack-cli] [31mError: Cannot find module 'ajv/dist/compile/codegen'
+Require stack:
+- /home/aaron/Projects/LastLight/node_modules/ajv-keywords/dist/definitions/typeof.js
+- /home/aaron/Projects/LastLight/node_modules/ajv-keywords/dist/keywords/typeof.js
+- /home/aaron/Projects/LastLight/node_modules/ajv-keywords/dist/keywords/index.js
+- /home/aaron/Projects/LastLight/node_modules/ajv-keywords/dist/index.js
+- /home/aaron/Projects/LastLight/node_modules/schema-utils/dist/validate.js
+- /home/aaron/Projects/LastLight/node_modules/schema-utils/dist/index.js
+- /home/aaron/Projects/LastLight/node_modules/copy-webpack-plugin/dist/index.js
+- /home/aaron/Projects/LastLight/node_modules/@nx/webpack/src/plugins/nx-webpack-plugin/lib/apply-base-config.js
+- /home/aaron/Projects/LastLight/node_modules/@nx/webpack/src/plugins/nx-webpack-plugin/nx-app-webpack-plugin.js
+- /home/aaron/Projects/LastLight/node_modules/@nx/webpack/app-plugin.js
+- /home/aaron/Projects/LastLight/game-server/webpack.config.js
+- /home/aaron/Projects/LastLight/node_modules/webpack-cli/lib/webpack-cli.js
+- /home/aaron/Projects/LastLight/node_modules/webpack-cli/lib/bootstrap.js
+- /home/aaron/Projects/LastLight/node_modules/webpack-cli/bin/cli.js
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1409:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1060:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1065:22)
+    at Function._load (node:internal/modules/cjs/loader:1214:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:234:24)
+    at Module.require (node:internal/modules/cjs/loader:1495:12)
+    at require (node:internal/modules/helpers:135:16)
+    at Object.<anonymous> (/home/aaron/Projects/LastLight/node_modules/ajv-keywords/dist/definitions/typeof.js:3:19)
+    at Module._compile (node:internal/modules/cjs/loader:1739:14) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/aaron/Projects/LastLight/node_modules/ajv-keywords/dist/definitions/typeof.js',
+    '/home/aaron/Projects/LastLight/node_modules/ajv-keywords/dist/keywords/typeof.js',
+    '/home/aaron/Projects/LastLight/node_modules/ajv-keywords/dist/keywords/index.js',
+    '/home/aaron/Projects/LastLight/node_modules/ajv-keywords/dist/index.js',
+    '/home/aaron/Projects/LastLight/node_modules/schema-utils/dist/validate.js',
+    '/home/aaron/Projects/LastLight/node_modules/schema-utils/dist/index.js',
+    '/home/aaron/Projects/LastLight/node_modules/copy-webpack-plugin/dist/index.js',
+    '/home/aaron/Projects/LastLight/node_modules/@nx/webpack/src/plugins/nx-webpack-plugin/lib/apply-base-config.js',
+    '/home/aaron/Projects/LastLight/node_modules/@nx/webpack/src/plugins/nx-webpack-plugin/nx-app-webpack-plugin.js',
+    '/home/aaron/Projects/LastLight/node_modules/@nx/webpack/app-plugin.js',
+    '/home/aaron/Projects/LastLight/game-server/webpack.config.js',
+    '/home/aaron/Projects/LastLight/node_modules/webpack-cli/lib/webpack-cli.js',
+    '/home/aaron/Projects/LastLight/node_modules/webpack-cli/lib/bootstrap.js',
+    '/home/aaron/Projects/LastLight/node_modules/webpack-cli/bin/cli.js'
+  ]
+}[39m
