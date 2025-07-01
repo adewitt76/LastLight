@@ -2,6 +2,12 @@
   "name": "@./game-server",
   "version": "0.0.1",
   "private": true,
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1",
+    "cors": "^2.8.5",
+    "uuid": "^11.1.0"
+  },
   "nx": {
     "targets": {
       "serve": {
