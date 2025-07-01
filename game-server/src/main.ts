@@ -14,10 +14,11 @@ import { v4 as uuidv4 } from 'uuid';
 const app = express();
 const server = createServer(app);
 
-// Configure CORS
+// Configure CORS for Express
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:4200",
-  credentials: true
+  origin: ["http://localhost:4200", "http://127.0.0.1:4200"],
+  credentials: true,
+  methods: ["GET", "POST", "OPTIONS"]
 }));
 
 // Socket.io server with TypeScript types
@@ -28,8 +29,10 @@ const io = new Server<
   SocketData
 >(server, {
   cors: {
-    origin: process.env.CLIENT_URL || "http://localhost:4200",
-    methods: ["GET", "POST"]
+    origin: ["http://localhost:4200", "http://127.0.0.1:4200"],
+    methods: ["GET", "POST"],
+    allowedHeaders: ["*"],
+    credentials: true
   }
 });
 
@@ -222,7 +225,7 @@ app.get('/health', (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
   console.log(`🚀 Game server running on port ${PORT}`);
 });

@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles for Last Light game */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0f0f23;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden; /* Prevent scrolling */
+  width: 100vw;
+  height: 100vh;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0f0f23;
+}
+
+/* Hide the app-root element completely since we use #app for Phaser */
+app-root {
+  display: none !important;
+}
