@@ -43,10 +43,12 @@ libs/
 ## 🎯 Development Status
 
 **Phase 1: Foundation (In Progress)**
-- [ ] NX monorepo setup
+- [x] NX monorepo setup
 - [ ] Basic multiplayer server
 - [ ] Simple Phaser 3 client
 - [ ] Core task system
+
+**Current Focus:** Socket.io server with room management
 
 See [GAME_PLAN.md](./GAME_PLAN.md) for detailed roadmap.
 
