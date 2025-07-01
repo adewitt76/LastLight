@@ -139,3 +139,26 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 test-output
+
+# NX
+.nx/cache
+.nx/workspace-data
+
+# Build outputs
+dist/
+build/
+out/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Game assets (if using large files)
+*.psd
+*.ai
