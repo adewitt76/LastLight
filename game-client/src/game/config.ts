@@ -15,7 +15,7 @@ export const GameConfig: Types.Core.GameConfig = {
     default: 'arcade',
     arcade: {
       gravity: { x: 0, y: 0 }, // Top-down game, no gravity
-      debug: false
+      debug: true // Temporarily enable to see collision boxes
     }
   },
   scale: {

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Wall Collision</title>
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial; }
+        #game-container { border: 2px solid #333; }
+    </style>
+</head>
+<body>
+    <h1>Wall Collision Test</h1>
+    <p>Use WASD or Arrow Keys to move. Player should not be able to walk through walls.</p>
+    <div id="game-container"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.0/dist/phaser.min.js"></script>
+    <script>
+        class TestScene extends Phaser.Scene {
+            constructor() {
+                super({ key: 'TestScene' });
+            }
+            
+            create() {
+                // Create player
+                this.player = this.physics.add.sprite(100, 100, null);
+                this.player.setDisplaySize(20, 20);
+                this.player.body.setSize(20, 20);
+                this.player.body.setCollideWorldBounds(true);
+                
+                // Create visual player
+                this.playerGraphics = this.add.graphics();
+                this.playerGraphics.fillStyle(0x4ecdc4);
+                this.playerGraphics.fillRect(90, 90, 20, 20);
+                
+                // Create walls
+                this.walls = this.physics.add.staticGroup();
+                
+                // Test walls
+                this.createWall(200, 150, 200, 20);
+                this.createWall(300, 200, 20, 100);
+                this.createWall(150, 250, 100, 20);
+                
+                // Setup collision
+                this.physics.add.collider(this.player, this.walls);
+                
+                // Controls
+                this.cursors = this.input.keyboard.createCursorKeys();
+                this.wasd = this.input.keyboard.addKeys('W,S,A,D');
+                
+                // Update player graphics
+                this.physics.world.on('worldstep', () => {
+                    this.playerGraphics.clear();
+                    this.playerGraphics.fillStyle(0x4ecdc4);
+                    this.playerGraphics.fillRect(this.player.x - 10, this.player.y - 10, 20, 20);
+                });
+            }
+            
+            createWall(x, y, width, height) {
+                // Visual wall
+                this.add.rectangle(x, y, width, height, 0x222222);
+                
+                // Physics wall
+                const wallBody = this.physics.add.staticSprite(x, y, null);
+                wallBody.setVisible(false);
+                wallBody.body.setSize(width, height);
+                wallBody.refreshBody();
+                this.walls.add(wallBody);
+            }
+            
+            update() {
+                const speed = 200;
+                
+                // Reset velocity
+                this.player.setVelocity(0);
+                
+                // Movement
+                if (this.cursors.left.isDown || this.wasd.A.isDown) {
+                    this.player.setVelocityX(-speed);
+                }
+                if (this.cursors.right.isDown || this.wasd.D.isDown) {
+                    this.player.setVelocityX(speed);
+                }
+                if (this.cursors.up.isDown || this.wasd.W.isDown) {
+                    this.player.setVelocityY(-speed);
+                }
+                if (this.cursors.down.isDown || this.wasd.S.isDown) {
+                    this.player.setVelocityY(speed);
+                }
+            }
+        }
+        
+        const config = {
+            type: Phaser.AUTO,
+            width: 800,
+            height: 600,
+            parent: 'game-container',
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: 0 },
+                    debug: true
+                }
+            },
+            scene: TestScene
+        };
+        
+        const game = new Phaser.Game(config);
+    </script>
+</body>
+</html>

@@ -12,6 +12,7 @@ export class MainScene extends Scene {
   private otherPlayers: Map<string, Phaser.Physics.Arcade.Sprite> = new Map();
   private otherPlayerGraphics: Map<string, Phaser.GameObjects.Graphics> = new Map();
   private otherPlayerNames: Map<string, Phaser.GameObjects.Text> = new Map();
+  private walls: Phaser.Physics.Arcade.StaticGroup;
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys | null = null;
   private wasd: any = null;
   
@@ -61,6 +62,9 @@ export class MainScene extends Scene {
 
     // Create our player
     this.createPlayer();
+    
+    // Setup physics collisions after player is created
+    this.setupCollisions();
 
     // Create other players
     this.createOtherPlayers();
@@ -158,6 +162,10 @@ export class MainScene extends Scene {
     this.player = this.physics.add.sprite(startX, startY, null);
     this.player.setDisplaySize(20, 20);
     
+    // Set physics body properties
+    this.player.body.setSize(20, 20);
+    this.player.body.setCollideWorldBounds(true);
+    
     // Create a graphics object for the player appearance
     const graphics = this.add.graphics();
     graphics.fillStyle(0x4ecdc4); // Cyan color
@@ -171,9 +179,6 @@ export class MainScene extends Scene {
         graphics.fillRect(this.player.x - 10, this.player.y - 10, 20, 20);
       }
     });
-    
-    // Set collision bounds
-    this.player.setCollideWorldBounds(true);
     
     // Set camera to follow this player
     this.cameras.main.startFollow(this.player);
@@ -217,6 +222,15 @@ export class MainScene extends Scene {
       null
     );
     sprite.setDisplaySize(20, 20);
+    
+    // Set physics body properties
+    sprite.body.setSize(20, 20);
+    sprite.body.setCollideWorldBounds(true);
+    
+    // Add collision with walls if walls exist
+    if (this.walls) {
+      this.physics.add.collider(sprite, this.walls);
+    }
     
     // Create graphics for other players
     const graphics = this.add.graphics();
@@ -633,32 +647,110 @@ export class MainScene extends Scene {
   }
 
   private createWalls() {
-    // Add strategic walls to create more isolated areas and interesting navigation
+    // Initialize static physics group for walls
+    this.walls = this.physics.add.staticGroup();
     const wallColor = 0x222222;
     
-    // Walls around power section (north-west)
-    this.add.rectangle(600, 600, 40, 400, wallColor);
-    this.add.rectangle(1000, 600, 40, 400, wallColor);
-    this.add.rectangle(800, 400, 400, 40, wallColor);
-    this.add.rectangle(800, 800, 400, 40, wallColor);
+    // POWER SECTION MAZE (North-West) - 2 entrances minimum
+    // Outer walls with entrance gaps
+    this.createWallSegment(580, 500, 40, 200, wallColor); // Left wall (top half)
+    this.createWallSegment(580, 750, 40, 150, wallColor); // Left wall (bottom half) - GAP for entrance
+    this.createWallSegment(1020, 500, 40, 200, wallColor); // Right wall (top half)
+    this.createWallSegment(1020, 750, 40, 150, wallColor); // Right wall (bottom half) - GAP for entrance
+    this.createWallSegment(650, 380, 300, 40, wallColor); // Top wall (left)
+    this.createWallSegment(950, 380, 100, 40, wallColor); // Top wall (right) - GAP for entrance
+    this.createWallSegment(600, 820, 400, 40, wallColor); // Bottom wall
     
-    // Walls around oxygen section (north-east)
-    this.add.rectangle(3800, 600, 40, 400, wallColor);
-    this.add.rectangle(4200, 600, 40, 400, wallColor);
-    this.add.rectangle(4000, 400, 400, 40, wallColor);
-    this.add.rectangle(4000, 800, 400, 40, wallColor);
+    // Internal maze walls in power section
+    this.createWallSegment(720, 500, 40, 160, wallColor); // Internal vertical wall
+    this.createWallSegment(880, 640, 40, 140, wallColor); // Internal vertical wall
+    this.createWallSegment(740, 580, 100, 40, wallColor); // Internal horizontal wall
     
-    // Walls around communications section (south)
-    this.add.rectangle(2200, 2800, 40, 400, wallColor);
-    this.add.rectangle(2600, 2800, 40, 400, wallColor);
-    this.add.rectangle(2400, 2600, 400, 40, wallColor);
-    this.add.rectangle(2400, 3000, 400, 40, wallColor);
+    // OXYGEN SECTION MAZE (North-East) - 2 entrances minimum
+    // Outer walls with entrance gaps
+    this.createWallSegment(3780, 500, 40, 200, wallColor); // Left wall (top half)
+    this.createWallSegment(3780, 750, 40, 150, wallColor); // Left wall (bottom half) - GAP for entrance
+    this.createWallSegment(4220, 500, 40, 200, wallColor); // Right wall (top half) 
+    this.createWallSegment(4220, 750, 40, 150, wallColor); // Right wall (bottom half) - GAP for entrance
+    this.createWallSegment(3850, 380, 300, 40, wallColor); // Top wall (left)
+    this.createWallSegment(4150, 380, 100, 40, wallColor); // Top wall (right) - GAP for entrance
+    this.createWallSegment(3800, 820, 400, 40, wallColor); // Bottom wall
+    
+    // Internal maze walls in oxygen section
+    this.createWallSegment(3920, 500, 40, 160, wallColor); // Internal vertical wall
+    this.createWallSegment(4080, 640, 40, 140, wallColor); // Internal vertical wall
+    this.createWallSegment(3940, 580, 100, 40, wallColor); // Internal horizontal wall
+    
+    // COMMUNICATIONS SECTION MAZE (South) - 2 entrances minimum
+    // Outer walls with entrance gaps
+    this.createWallSegment(2180, 2700, 40, 200, wallColor); // Left wall (top half)
+    this.createWallSegment(2180, 2950, 40, 150, wallColor); // Left wall (bottom half) - GAP for entrance
+    this.createWallSegment(2620, 2700, 40, 200, wallColor); // Right wall (top half)
+    this.createWallSegment(2620, 2950, 40, 150, wallColor); // Right wall (bottom half) - GAP for entrance
+    this.createWallSegment(2200, 2580, 400, 40, wallColor); // Top wall
+    this.createWallSegment(2250, 3020, 300, 40, wallColor); // Bottom wall (left)
+    this.createWallSegment(2550, 3020, 100, 40, wallColor); // Bottom wall (right) - GAP for entrance
+    
+    // Internal maze walls in communications section
+    this.createWallSegment(2320, 2700, 40, 160, wallColor); // Internal vertical wall
+    this.createWallSegment(2480, 2840, 40, 140, wallColor); // Internal vertical wall
+    this.createWallSegment(2340, 2780, 100, 40, wallColor); // Internal horizontal wall
 
-    // Additional barrier walls for maze-like navigation
-    this.add.rectangle(1800, 1200, 40, 800, wallColor);
-    this.add.rectangle(3000, 1200, 40, 800, wallColor);
-    this.add.rectangle(1200, 2000, 40, 800, wallColor);
-    this.add.rectangle(3600, 2000, 40, 800, wallColor);
+    // CORRIDOR MAZE WALLS - Create strategic bottlenecks and alternate paths
+    // Central hub protection walls
+    this.createWallSegment(2300, 1400, 40, 200, wallColor); // Hub left barrier
+    this.createWallSegment(2500, 1400, 40, 200, wallColor); // Hub right barrier
+    this.createWallSegment(2200, 1500, 200, 40, wallColor); // Hub top barrier
+    this.createWallSegment(2500, 1700, 200, 40, wallColor); // Hub bottom barrier
+    
+    // Main corridor divisions - create multiple paths
+    this.createWallSegment(1600, 1000, 40, 400, wallColor); // West division wall
+    this.createWallSegment(3200, 1000, 40, 400, wallColor); // East division wall
+    this.createWallSegment(1000, 1800, 800, 40, wallColor); // Southwest horizontal wall
+    this.createWallSegment(3000, 1800, 800, 40, wallColor); // Southeast horizontal wall
+    
+    // Secondary room connection walls - force specific routing
+    this.createWallSegment(800, 1400, 40, 400, wallColor); // Medical bay isolation
+    this.createWallSegment(4000, 1400, 40, 400, wallColor); // Storage bay isolation
+    this.createWallSegment(1200, 2200, 40, 400, wallColor); // Cafeteria access control
+    this.createWallSegment(3600, 2200, 40, 400, wallColor); // Engine room access control
+    
+    // Maze connectors - strategic chokepoints with alternate routes
+    this.createWallSegment(1400, 1200, 200, 40, wallColor); // Northwest connector
+    this.createWallSegment(3400, 1200, 200, 40, wallColor); // Northeast connector
+    this.createWallSegment(1400, 2400, 200, 40, wallColor); // Southwest connector
+    this.createWallSegment(3400, 2400, 200, 40, wallColor); // Southeast connector
+  }
+  
+  private createWallSegment(x: number, y: number, width: number, height: number, color: number) {
+    // Create visual wall
+    const wallGraphic = this.add.rectangle(x, y, width, height, color);
+    
+    // Create physics wall using static sprite with proper sizing
+    const wallBody = this.physics.add.staticSprite(x, y, null);
+    wallBody.setVisible(false); // Hide the physics sprite
+    
+    // IMPORTANT: Set display size first, then body size
+    wallBody.setDisplaySize(width, height);
+    wallBody.body.setSize(width, height, true); // true = center the body
+    wallBody.refreshBody(); // Apply changes to static body
+    
+    // Add to walls group
+    this.walls.add(wallBody);
+  }
+  
+  private setupCollisions() {
+    if (this.player && this.walls) {
+      // Player collides with walls
+      this.physics.add.collider(this.player, this.walls);
+      
+      // Other players collide with walls too
+      this.otherPlayers.forEach(otherPlayer => {
+        if (otherPlayer.body) {
+          this.physics.add.collider(otherPlayer, this.walls);
+        }
+      });
+    }
   }
 
   private updateOtherPlayerVisuals(playerId: string) {
