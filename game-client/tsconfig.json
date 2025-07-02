@@ -4,6 +4,12 @@
   "include": [],
   "references": [
     {
+      "path": "../libs/shared/models"
+    },
+    {
+      "path": "../libs/shared/networking"
+    },
+    {
       "path": "./tsconfig.app.json"
     },
     {

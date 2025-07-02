@@ -1,4 +1,4 @@
-import { Player, GameRoom, GameState } from '@./shared/models';
+import { Player, GameRoom, GameState } from '@lastlight/shared-models';
 
 // Client to Server Events
 export interface ClientToServerEvents {
@@ -11,6 +11,8 @@ export interface ClientToServerEvents {
   // Game Actions
   'game:start': () => void;
   'game:move': (data: { position: { x: number; y: number } }) => void;
+  'game:request-positions': () => void;
+  'game:complete-task': (data: { taskId: string }) => void;
   'game:task-interact': (data: { taskId: string }) => void;
   'game:emergency-meeting': () => void;
   'game:vote': (data: { targetPlayerId: string | null }) => void;

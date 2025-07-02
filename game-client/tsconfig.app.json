@@ -19,5 +19,13 @@
   ],
   "include": [
     "src/**/*.ts"
+  ],
+  "references": [
+    {
+      "path": "../libs/shared/models/tsconfig.lib.json"
+    },
+    {
+      "path": "../libs/shared/networking/tsconfig.lib.json"
+    }
   ]
 }

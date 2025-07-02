@@ -73,6 +73,9 @@ libs/
 # Install dependencies
 npm install
 
+# IMPORTANT: After making changes to shared libraries, sync the workspace
+npx nx sync
+
 # Start applications
 npx nx serve game-client    # Phaser 3 game client
 npx nx serve game-server    # Socket.io backend server  
@@ -102,8 +105,56 @@ npx nx run-many -t typecheck
 
 See [GAME_PLAN.md](./GAME_PLAN.md) for detailed development phases, milestones, and implementation order.
 
+## Development Guidelines & Lessons Learned
+
+### NX Workspace Management
+- **Always run `npx nx sync`** after modifying shared library dependencies or imports
+- Use proper package names for imports (e.g., `@lastlight/shared-models` not `@./shared/models`)
+- The workspace will automatically sync TypeScript project references when needed
+
+### Code Organization
+- **Shared Libraries:** Use for type definitions, networking interfaces, and shared utilities
+- **Import Paths:** Use the full package names defined in package.json for cross-library imports
+- **Event Definitions:** Keep all Socket.io events in `@lastlight/shared-networking` for consistency
+
+### Game Development Patterns
+- **Scene Management:** Each major game state (Lobby, Main Game) should be a separate Phaser scene
+- **Socket Handling:** Initialize socket connections in scenes and pass between scenes via init data
+- **State Synchronization:** Server is authoritative; clients emit events and receive state updates
+- **UI Feedback:** Always provide visual feedback for user actions (progress bars, error messages, etc.)
+
+### Testing & Debugging
+- **Minimum Players:** Set to 1 for testing (change `room.players.length < 1` in game-server)
+- **Error Handling:** Implement client-side error messages for better UX
+- **Room Management:** Auto-refresh room lists when players join/leave for real-time updates
+
+### Task System Implementation
+- **Task Areas:** Use Phaser zones for interaction detection
+- **Visual Indicators:** Blinking indicators help players locate tasks
+- **Progress Feedback:** Show task completion with animations for better game feel
+- **State Management:** Update both local and server state for task completion
+
+### Multiplayer Synchronization
+- **Position Updates:** Server sends all existing player positions to new joiners
+- **Game State Sync:** Late joiners receive current game state if game is in progress
+- **Visual Updates:** Client graphics update in real-time with player movement
+- **Room Cleanup:** Automatic room reset after game completion and proper player leave handling
+
+### Map Design & Strategic Gameplay
+- **Large Isolated Sections:** Power, Oxygen, and Communications areas are well separated for privacy
+- **Central Hub:** Players spawn in center hub (2400, 1600) with corridors leading to different sections
+- **Privacy for Tasks:** Cannot see other sections from any task location - good isolation for social deduction
+- **Camera System:** Follows individual players with 0.75x zoom for optimal navigation
+- **World Bounds:** 4800x3200 world size - 2x larger than original for good separation without being overwhelming
+- **Travel Time:** Moderate time required to move between sections creates strategic decisions
+- **Section Distances:** 
+  - Power Core: (800, 600) - North-West
+  - Life Support: (4000, 600) - North-East  
+  - Communications: (2400, 2800) - South
+
 ## Notes
 
 - Game jam focus: prioritize core gameplay loop over polish
 - Prototype-friendly: start with basic graphics, add visual flair later
 - Emphasize the unique decay mechanics that differentiate from Among Us
+- **Phase 1 (MVP Core) is COMPLETE** - ready for Phase 2 (Decay System)

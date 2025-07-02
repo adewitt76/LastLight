@@ -7,8 +7,8 @@ import {
   ServerToClientEvents, 
   InterServerEvents, 
   SocketData 
-} from '@./shared/networking';
-import { GameRoom, Player, GameState } from '@./shared/models';
+} from '@lastlight/shared-networking';
+import { GameRoom, Player, GameState, Task } from '@lastlight/shared-models';
 import { v4 as uuidv4 } from 'uuid';
 
 const app = express();
@@ -49,11 +49,48 @@ function createPlayer(id: string, name: string): Player {
   return {
     id,
     name,
-    position: { x: 0, y: 0 },
+    position: { x: 2400, y: 1600 }, // Start in center hub
     role: 'crewmate',
     isAlive: true,
     infectionLevel: 0
   };
+}
+
+function createInitialTasks(): Task[] {
+  return [
+    {
+      id: 'power',
+      roomId: 'power-room',
+      type: 'power',
+      isCompleted: false
+    },
+    {
+      id: 'oxygen',
+      roomId: 'oxygen-room',
+      type: 'oxygen',
+      isCompleted: false
+    },
+    {
+      id: 'communications',
+      roomId: 'comms-room',
+      type: 'communications',
+      isCompleted: false
+    }
+  ];
+}
+
+function resetRoom(room: GameRoom) {
+  // Reset room state
+  room.isStarted = false;
+  room.gameState = null;
+  
+  // Keep players in the room but reset their state
+  room.players.forEach(player => {
+    player.position = { x: 2400, y: 1600 }; // Reset to center hub
+    player.role = 'crewmate';
+    player.isAlive = true;
+    player.infectionLevel = 0;
+  });
 }
 
 function createGameRoom(id: string, name: string, hostPlayerId: string, maxPlayers: number): GameRoom {
@@ -125,17 +162,40 @@ io.on('connection', (socket) => {
     socket.emit('room:joined', { room, playerId });
     socket.to(roomId).emit('room:player-joined', { player });
     
+    // Send current positions of all existing players to the new player
+    room.players.forEach(existingPlayer => {
+      if (existingPlayer.id !== playerId) {
+        socket.emit('game:player-moved', { 
+          playerId: existingPlayer.id, 
+          position: existingPlayer.position 
+        });
+      }
+    });
+    
+    // If game is in progress, send game state to new player
+    if (room.isStarted && room.gameState) {
+      socket.emit('game:started', { gameState: room.gameState });
+    }
+    
     console.log(`${playerName} joined room: ${roomId}`);
   });
 
   socket.on('room:leave', () => {
+    console.log(`Player ${socket.data.playerName} manually left room ${socket.data.roomId}`);
     handlePlayerLeave(socket);
   });
 
   socket.on('room:list', () => {
-    const availableRooms = Array.from(gameRooms.values())
-      .filter(room => !room.isStarted && room.players.length < room.maxPlayers);
-    socket.emit('room:list', { rooms: availableRooms });
+    const roomList = Array.from(gameRooms.values()).map(room => ({
+      id: room.id,
+      name: room.name,
+      playerCount: room.players.length,
+      maxPlayers: room.maxPlayers,
+      status: room.isStarted ? 'playing' : 'waiting',
+      isJoinable: !room.isStarted && room.players.length < room.maxPlayers
+    }));
+    
+    socket.emit('room:list', { rooms: roomList });
   });
 
   // Game Actions
@@ -158,8 +218,8 @@ io.on('connection', (socket) => {
       return;
     }
     
-    if (room.players.length < 4) {
-      socket.emit('error', { message: 'Need at least 4 players', code: 'NOT_ENOUGH_PLAYERS' });
+    if (room.players.length < 1) {
+      socket.emit('error', { message: 'Need at least 1 player', code: 'NOT_ENOUGH_PLAYERS' });
       return;
     }
     
@@ -170,7 +230,7 @@ io.on('connection', (socket) => {
       rooms: [], // Will be populated later
       entropyMeter: 0,
       phase: 'playing',
-      tasks: [], // Will be populated later
+      tasks: createInitialTasks(),
       maxPlayers: room.maxPlayers,
       hostPlayerId: room.hostPlayerId
     };
@@ -179,7 +239,109 @@ io.on('connection', (socket) => {
     room.isStarted = true;
     
     io.to(roomId).emit('game:started', { gameState });
+    
+    // Send current positions to all players when game starts
+    room.players.forEach(player => {
+      io.to(roomId).emit('game:player-moved', { 
+        playerId: player.id, 
+        position: player.position 
+      });
+    });
+    
     console.log(`Game started in room: ${roomId}`);
+  });
+
+  // Game Events
+  socket.on('game:move', ({ position }) => {
+    const { playerId, roomId } = socket.data;
+    
+    if (!playerId || !roomId) return;
+    
+    const room = gameRooms.get(roomId);
+    if (!room) return;
+    
+    // Update player position in room players array (always available)
+    const player = room.players.find(p => p.id === playerId);
+    if (player) {
+      player.position = position;
+      socket.to(roomId).emit('game:player-moved', { playerId, position });
+    }
+    
+    // Also update in game state if game is started
+    if (room.gameState) {
+      const gamePlayer = room.gameState.players.find(p => p.id === playerId);
+      if (gamePlayer) {
+        gamePlayer.position = position;
+      }
+    }
+  });
+
+  socket.on('game:request-positions', () => {
+    const { playerId, roomId } = socket.data;
+    
+    if (!playerId || !roomId) return;
+    
+    const room = gameRooms.get(roomId);
+    if (!room) return;
+    
+    // Send positions of all other players
+    room.players.forEach(player => {
+      if (player.id !== playerId) {
+        socket.emit('game:player-moved', { 
+          playerId: player.id, 
+          position: player.position 
+        });
+      }
+    });
+  });
+
+  socket.on('game:complete-task', ({ taskId }) => {
+    const { playerId, roomId } = socket.data;
+    
+    if (!playerId || !roomId) return;
+    
+    const room = gameRooms.get(roomId);
+    if (!room || !room.gameState) return;
+    
+    // Find and complete the task
+    const task = room.gameState.tasks.find(t => t.id === taskId);
+    if (task && !task.isCompleted) {
+      task.isCompleted = true;
+      task.assignedPlayerId = playerId;
+      
+      // Broadcast task completion
+      io.to(roomId).emit('game:task-completed', { taskId, playerId });
+      
+      // Check win condition
+      const allTasksCompleted = room.gameState.tasks.every(t => t.isCompleted);
+      if (allTasksCompleted) {
+        room.gameState.phase = 'ended';
+        io.to(roomId).emit('game:ended', { 
+          winner: 'crew', 
+          reason: 'All tasks completed' 
+        });
+
+        // Reset room after game ends (5 second delay)
+        setTimeout(() => {
+          resetRoom(room);
+          
+          // Broadcast updated room list
+          const roomList = Array.from(gameRooms.values()).map(room => ({
+            id: room.id,
+            name: room.name,
+            playerCount: room.players.length,
+            maxPlayers: room.maxPlayers,
+            status: room.isStarted ? 'playing' : 'waiting',
+            isJoinable: !room.isStarted && room.players.length < room.maxPlayers
+          }));
+          
+          io.emit('room:list', { rooms: roomList });
+          console.log(`Room ${roomId} reset after game completion`);
+        }, 5000);
+      }
+      
+      console.log(`Task ${taskId} completed by ${playerId} in room ${roomId}`);
+    }
   });
 
   // Handle disconnection
@@ -213,6 +375,18 @@ io.on('connection', (socket) => {
       socket.to(roomId).emit('room:updated', { room });
       console.log(`Host transferred in room: ${roomId}`);
     }
+
+    // Broadcast updated room list to all players in lobby
+    const roomList = Array.from(gameRooms.values()).map(room => ({
+      id: room.id,
+      name: room.name,
+      playerCount: room.players.length,
+      maxPlayers: room.maxPlayers,
+      status: room.isStarted ? 'playing' : 'waiting',
+      isJoinable: !room.isStarted && room.players.length < room.maxPlayers
+    }));
+    
+    io.emit('room:list', { rooms: roomList });
   }
 });
 
