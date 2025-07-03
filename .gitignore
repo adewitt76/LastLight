@@ -148,6 +148,7 @@ test-output
 dist/
 build/
 out/
+out-tsc/
 
 # IDE
 .vscode/

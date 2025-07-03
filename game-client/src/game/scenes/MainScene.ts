@@ -10,7 +10,6 @@ export class MainScene extends Scene {
   private socket: Socket<ServerToClientEvents, ClientToServerEvents> | null = null;
   private player: Phaser.Physics.Arcade.Sprite | null = null;
   private otherPlayers: Map<string, Phaser.Physics.Arcade.Sprite> = new Map();
-  private otherPlayerGraphics: Map<string, Phaser.GameObjects.Graphics> = new Map();
   private otherPlayerNames: Map<string, Phaser.GameObjects.Text> = new Map();
   private walls: Phaser.Physics.Arcade.StaticGroup;
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys | null = null;
@@ -40,8 +39,11 @@ export class MainScene extends Scene {
   }
 
   preload() {
-    // Create player sprite using graphics instead of image
-    this.load.image('player', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P//PwAFBQIByc4d8gAAAABJRU5ErkJggg==');
+    // Load the astronaut sprite sheet
+    this.load.spritesheet('astronaut', 'assets/p1_sprite_sheet.png', {
+      frameWidth: 80,
+      frameHeight: 80
+    });
   }
 
   create() {
@@ -55,6 +57,9 @@ export class MainScene extends Scene {
 
     // Create task areas
     this.createTaskAreas();
+
+    // Create animations for all 8 directions
+    this.createAnimations();
 
     // Setup input
     this.cursors = this.input.keyboard?.createCursorKeys() || null;
@@ -148,37 +153,117 @@ export class MainScene extends Scene {
     this.createWalls();
   }
 
+  private createAnimations() {
+    // Create walking animations for all 8 directions (clockwise from North)
+    // Row 0: North (back view)
+    this.anims.create({
+      key: 'walk-north',
+      frames: this.anims.generateFrameNumbers('astronaut', { start: 0, end: 3 }),
+      frameRate: 10,
+      repeat: -1
+    });
+    
+    // Row 1: Northwest (back-left angle)
+    this.anims.create({
+      key: 'walk-northwest',
+      frames: this.anims.generateFrameNumbers('astronaut', { start: 4, end: 7 }),
+      frameRate: 10,
+      repeat: -1
+    });
+    
+    // Row 2: West (left side view)
+    this.anims.create({
+      key: 'walk-west',
+      frames: this.anims.generateFrameNumbers('astronaut', { start: 8, end: 11 }),
+      frameRate: 10,
+      repeat: -1
+    });
+    
+    // Row 3: Southwest (front-left angle)
+    this.anims.create({
+      key: 'walk-southwest',
+      frames: this.anims.generateFrameNumbers('astronaut', { start: 12, end: 15 }),
+      frameRate: 10,
+      repeat: -1
+    });
+    
+    // Row 4: South (front view with visor)
+    this.anims.create({
+      key: 'walk-south',
+      frames: this.anims.generateFrameNumbers('astronaut', { start: 16, end: 19 }),
+      frameRate: 10,
+      repeat: -1
+    });
+    
+    // Row 5: Southeast (front-right angle)
+    this.anims.create({
+      key: 'walk-southeast',
+      frames: this.anims.generateFrameNumbers('astronaut', { start: 20, end: 23 }),
+      frameRate: 10,
+      repeat: -1
+    });
+    
+    // Row 6: East (right side view)
+    this.anims.create({
+      key: 'walk-east',
+      frames: this.anims.generateFrameNumbers('astronaut', { start: 24, end: 27 }),
+      frameRate: 10,
+      repeat: -1
+    });
+    
+    // Row 7: Northeast (back-right angle)
+    this.anims.create({
+      key: 'walk-northeast',
+      frames: this.anims.generateFrameNumbers('astronaut', { start: 28, end: 31 }),
+      frameRate: 10,
+      repeat: -1
+    });
+    
+    // Idle animations (first frame of each direction)
+    this.anims.create({
+      key: 'idle-north',
+      frames: [{ key: 'astronaut', frame: 0 }],
+      frameRate: 1
+    });
+    
+    this.anims.create({
+      key: 'idle-south',
+      frames: [{ key: 'astronaut', frame: 16 }],
+      frameRate: 1
+    });
+    
+    this.anims.create({
+      key: 'idle-west',
+      frames: [{ key: 'astronaut', frame: 8 }],
+      frameRate: 1
+    });
+    
+    this.anims.create({
+      key: 'idle-east',
+      frames: [{ key: 'astronaut', frame: 24 }],
+      frameRate: 1
+    });
+  }
+
   private createPlayer() {
     const { width, height } = this.scale;
     
-    // Create player sprite using graphics instead of image
     // Use center hub as default position (2400, 1600) - center of map
     const defaultX = 2400;
     const defaultY = 1600;
     const startX = (this.playerData?.position.x !== 4800) ? this.playerData?.position.x : defaultX;
     const startY = (this.playerData?.position.y !== 3200) ? this.playerData?.position.y : defaultY;
 
-    // Create a rectangle shape for the player
-    this.player = this.physics.add.sprite(startX, startY, null);
-    this.player.setDisplaySize(20, 20);
+    // Create player sprite using the astronaut sprite sheet
+    this.player = this.physics.add.sprite(startX, startY, 'astronaut');
+    this.player.setDisplaySize(120, 120); // 1.5x larger than previous size
     
     // Set physics body properties
-    this.player.body.setSize(20, 20);
+    this.player.body.setSize(25, 48); // Width 25 pixels, height reduced by half
     this.player.body.setCollideWorldBounds(true);
     
-    // Create a graphics object for the player appearance
-    const graphics = this.add.graphics();
-    graphics.fillStyle(0x4ecdc4); // Cyan color
-    graphics.fillRect(startX - 10, startY - 10, 20, 20);
-    
-    // Make the graphics follow the player
-    this.physics.world.on('worldstep', () => {
-      if (this.player) {
-        graphics.clear();
-        graphics.fillStyle(0x4ecdc4);
-        graphics.fillRect(this.player.x - 10, this.player.y - 10, 20, 20);
-      }
-    });
+    // Start with idle south animation
+    this.player.play('idle-south');
     
     // Set camera to follow this player
     this.cameras.main.startFollow(this.player);
@@ -219,21 +304,24 @@ export class MainScene extends Scene {
     const sprite = this.physics.add.sprite(
       playerData.position.x, 
       playerData.position.y, 
-      null
+      'astronaut'
     );
-    sprite.setDisplaySize(20, 20);
+    sprite.setDisplaySize(120, 120); // Same as main player - 1.5x larger
     
     // Set physics body properties
-    sprite.body.setSize(20, 20);
+    sprite.body.setSize(25, 48); // Width 25 pixels, height reduced by half
     sprite.body.setCollideWorldBounds(true);
+    
+    // Start with idle south animation
+    sprite.play('idle-south');
+    
+    // Set different tint for other players
+    sprite.setTint(0xff6b6b); // Red tint
     
     // Add collision with walls if walls exist
     if (this.walls) {
       this.physics.add.collider(sprite, this.walls);
     }
-    
-    // Create graphics for other players
-    const graphics = this.add.graphics();
     
     // Add name label
     const nameText = this.add.text(
@@ -249,10 +337,9 @@ export class MainScene extends Scene {
 
     // Store references
     this.otherPlayers.set(playerData.id, sprite);
-    this.otherPlayerGraphics.set(playerData.id, graphics);
     this.otherPlayerNames.set(playerData.id, nameText);
 
-    // Update graphics and name position
+    // Update name position
     this.updateOtherPlayerVisuals(playerData.id);
   }
 
@@ -274,15 +361,12 @@ export class MainScene extends Scene {
     this.socket.on('room:player-left', ({ playerId }) => {
       console.log('Player left:', playerId);
       const sprite = this.otherPlayers.get(playerId);
-      const graphics = this.otherPlayerGraphics.get(playerId);
       const nameText = this.otherPlayerNames.get(playerId);
       
       if (sprite) sprite.destroy();
-      if (graphics) graphics.destroy();
       if (nameText) nameText.destroy();
       
       this.otherPlayers.delete(playerId);
-      this.otherPlayerGraphics.delete(playerId);
       this.otherPlayerNames.delete(playerId);
     });
 
@@ -406,25 +490,35 @@ export class MainScene extends Scene {
 
     const speed = 200;
     let moved = false;
-
-    // Reset velocity
-    this.player.setVelocity(0);
+    let velocityX = 0;
+    let velocityY = 0;
 
     // Movement controls
     if (this.cursors.left?.isDown || this.wasd?.A?.isDown) {
-      this.player.setVelocityX(-speed);
+      velocityX = -speed;
       moved = true;
     } else if (this.cursors.right?.isDown || this.wasd?.D?.isDown) {
-      this.player.setVelocityX(speed);
+      velocityX = speed;
       moved = true;
     }
 
     if (this.cursors.up?.isDown || this.wasd?.W?.isDown) {
-      this.player.setVelocityY(-speed);
+      velocityY = -speed;
       moved = true;
     } else if (this.cursors.down?.isDown || this.wasd?.S?.isDown) {
-      this.player.setVelocityY(speed);
+      velocityY = speed;
       moved = true;
+    }
+
+    // Apply velocity
+    this.player.setVelocity(velocityX, velocityY);
+
+    // Update animation based on movement direction
+    if (moved) {
+      this.updatePlayerAnimation(velocityX, velocityY);
+    } else {
+      // Stop animation when not moving but keep facing direction
+      this.player.anims.stop();
     }
 
     // Send position update to server if moved
@@ -437,6 +531,40 @@ export class MainScene extends Scene {
     // Check for task interaction (E key)
     if (this.input.keyboard?.checkDown(this.input.keyboard.addKey('E'), 250)) {
       this.checkTaskInteraction();
+    }
+  }
+
+  private updatePlayerAnimation(velocityX: number, velocityY: number) {
+    if (!this.player) return;
+
+    // Determine direction based on velocity
+    const angle = Math.atan2(velocityY, velocityX);
+    const degrees = (angle * 180) / Math.PI;
+    
+    // Convert angle to 8-direction animation
+    let animKey = 'walk-south'; // default
+    
+    if (degrees >= -22.5 && degrees < 22.5) {
+      animKey = 'walk-east';
+    } else if (degrees >= 22.5 && degrees < 67.5) {
+      animKey = 'walk-southeast';
+    } else if (degrees >= 67.5 && degrees < 112.5) {
+      animKey = 'walk-south';
+    } else if (degrees >= 112.5 && degrees < 157.5) {
+      animKey = 'walk-southwest';
+    } else if (degrees >= 157.5 || degrees < -157.5) {
+      animKey = 'walk-west';
+    } else if (degrees >= -157.5 && degrees < -112.5) {
+      animKey = 'walk-northwest';
+    } else if (degrees >= -112.5 && degrees < -67.5) {
+      animKey = 'walk-north';
+    } else if (degrees >= -67.5 && degrees < -22.5) {
+      animKey = 'walk-northeast';
+    }
+
+    // Only change animation if it's different from current
+    if (this.player.anims.currentAnim?.key !== animKey) {
+      this.player.play(animKey);
     }
   }
 
@@ -755,15 +883,9 @@ export class MainScene extends Scene {
 
   private updateOtherPlayerVisuals(playerId: string) {
     const sprite = this.otherPlayers.get(playerId);
-    const graphics = this.otherPlayerGraphics.get(playerId);
     const nameText = this.otherPlayerNames.get(playerId);
     
-    if (sprite && graphics && nameText) {
-      // Update graphics position
-      graphics.clear();
-      graphics.fillStyle(0xff6b6b); // Red color for other players
-      graphics.fillRect(sprite.x - 10, sprite.y - 10, 20, 20);
-      
+    if (sprite && nameText) {
       // Update name position
       nameText.setPosition(sprite.x, sprite.y - 30);
     }
