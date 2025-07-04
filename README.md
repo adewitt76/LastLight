@@ -29,9 +29,8 @@ You're part of a failing colony ship's crew with critical systems breaking down.
 
 ```
 apps/
-  game-client/          # Phaser 3 frontend game
+  game-client/          # Phaser 3 frontend with integrated lobby
   game-server/          # Socket.io multiplayer server
-  lobby-web/            # Web-based lobby interface
 libs/
   shared/
     game-engine/        # Core game logic
@@ -42,21 +41,24 @@ libs/
 
 ## 🎯 Development Status
 
-**Phase 1: Foundation (Nearly Complete)**
-- [x] NX monorepo setup
-- [x] Basic multiplayer server
-- [x] Simple Phaser 3 client
-- [ ] Core task system
+**Phase 1: MVP Core (COMPLETE ✅)**
+- [x] NX monorepo setup with project.json configuration
+- [x] Manager-based architecture implementation
+- [x] Multiplayer server with room management
+- [x] Phaser 3 client with integrated lobby
+- [x] Core task system with interaction detection
+- [x] Real-time player movement and synchronization
+- [x] Ship layout with maze-like collision system
+- [x] 8-directional player animations
 
-**Current Focus:** Enhanced lobby system and task implementation
+**Current Focus:** Phase 2 - Decay System Implementation
 
-**Recent Milestones:**
-- ✅ Socket.io server with room management (4-10 players)
-- ✅ TypeScript data models and networking interfaces
-- ✅ Health monitoring and error handling
-- ✅ Phaser 3 client with player movement and multiplayer sync
-- ✅ Room creation and basic ship visualization
-- ✅ Real-time player position synchronization
+**Recent Major Refactoring:**
+- ✅ Modular manager architecture (RoomManager, GameManager, PlayerManager, etc.)
+- ✅ Consolidated single-client architecture (removed separate lobby-web)
+- ✅ TypeScript error resolution and DOM API support
+- ✅ Proper NX project.json configuration
+- ✅ Comprehensive documentation updates
 
 See [GAME_PLAN.md](./GAME_PLAN.md) for detailed roadmap.
 
@@ -78,17 +80,17 @@ npm install
 
 ### Development
 
-Start individual applications:
+Start applications:
 
 ```bash
-# Start the game client (Phaser 3 frontend)
+# Start the game client (Phaser 3 frontend with integrated lobby)
 npx nx serve game-client
 
 # Start the game server (Socket.io backend)
 npx nx serve game-server
 
-# Start the lobby web interface
-npx nx serve lobby-web
+# IMPORTANT: After making changes to shared libraries, sync the workspace
+npx nx sync
 ```
 
 Build applications:
@@ -97,7 +99,6 @@ Build applications:
 # Build specific app
 npx nx build game-client
 npx nx build game-server
-npx nx build lobby-web
 
 # Build all apps
 npx nx run-many -t build
@@ -111,7 +112,36 @@ npx nx test game-client
 
 # Test all projects
 npx nx run-many -t test
+
+# Lint and typecheck
+npx nx run-many -t lint
+npx nx run-many -t typecheck
 ```
+
+## 🏗 Architecture
+
+### Manager-Based Design
+The project uses a modular manager architecture for maintainability and separation of concerns:
+
+**Server-Side Managers:**
+- `RoomManager` - Room lifecycle and player management
+- `GameManager` - Game state, task validation, win conditions
+- `SocketHandlers` - Socket.io event handling
+
+**Client-Side Managers:**
+- `ShipLayoutManager` - Ship visual layout creation
+- `PlayerManager` - Player sprites, animations, movement
+- `TaskManager` - Task system and interaction detection
+- `GameSocketManager` - Socket.io client communication
+- `GameUI` - User interface management
+- `WallCollisionManager` - Physics collision system
+
+### Benefits
+- **Maintainable**: Each manager has a single responsibility
+- **Testable**: Smaller, focused classes are easier to unit test
+- **Reusable**: Managers can be shared across different scenes
+- **Debuggable**: Easier to isolate and fix issues
+- **Collaborative**: Multiple developers can work on different systems
 
 ## 🎮 What Makes This Unique
 

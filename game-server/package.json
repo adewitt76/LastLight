@@ -1,5 +1,5 @@
 {
-  "name": "@./game-server",
+  "name": "@game-server",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
@@ -7,34 +7,5 @@
     "socket.io": "^4.8.1",
     "cors": "^2.8.5",
     "uuid": "^11.1.0"
-  },
-  "nx": {
-    "targets": {
-      "serve": {
-        "continuous": true,
-        "executor": "@nx/js:node",
-        "defaultConfiguration": "development",
-        "dependsOn": [
-          "build"
-        ],
-        "options": {
-          "buildTarget": "@./game-server:build",
-          "runBuildTargetDependencies": false
-        },
-        "configurations": {
-          "development": {
-            "buildTarget": "@./game-server:build:development"
-          },
-          "production": {
-            "buildTarget": "@./game-server:build:production"
-          }
-        }
-      },
-      "test": {
-        "options": {
-          "passWithNoTests": true
-        }
-      }
-    }
   }
 }

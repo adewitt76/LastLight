@@ -1,0 +1,67 @@
+{
+  "name": "@game-server",
+  "projectType": "application",
+  "sourceRoot": "game-server/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "tsc",
+        "outputPath": "game-server/dist",
+        "main": "game-server/src/main.ts",
+        "tsConfig": "game-server/tsconfig.app.json",
+        "assets": ["game-server/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "game-server/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "extractLicenses": true,
+          "optimization": true,
+          "sourceMap": false,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "@game-server:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "@game-server:build:development"
+        },
+        "production": {
+          "buildTarget": "@game-server:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/test-output/jest/game-server"],
+      "options": {
+        "jestConfig": "game-server/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["game-server/**/*.ts"]
+      }
+    }
+  }
+}
