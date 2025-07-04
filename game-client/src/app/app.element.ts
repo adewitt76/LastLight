@@ -1,11 +1,9 @@
 import './app.element.css';
 
 export class AppElement extends HTMLElement {
-  public static observedAttributes = [
+  public static observedAttributes: string[] = [];
 
-  ];
-
-  connectedCallback() {
+  connectedCallback(): void {
     // Clear any default content - this element is just for compatibility
     // The actual game runs in the #app div from main.ts
     this.innerHTML = '';
@@ -14,4 +12,5 @@ export class AppElement extends HTMLElement {
     this.style.display = 'none';
   }
 }
+
 customElements.define('app-root', AppElement);

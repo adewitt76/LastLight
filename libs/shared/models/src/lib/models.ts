@@ -43,3 +43,12 @@ export interface GameRoom {
   maxPlayers: number;
   hostPlayerId: string;
 }
+
+export interface RoomSummary {
+  id: string;
+  name: string;
+  playerCount: number;
+  maxPlayers: number;
+  status: 'waiting' | 'playing';
+  isJoinable: boolean;
+}

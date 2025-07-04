@@ -3,4 +3,4 @@ import { Game } from 'phaser';
 import { GameConfig } from './game/config';
 
 // Initialize Phaser game
-const game = new Game(GameConfig);
+new Game(GameConfig);

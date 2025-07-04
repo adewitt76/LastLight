@@ -1,0 +1,71 @@
+{
+  "name": "@game-client",
+  "projectType": "application",
+  "sourceRoot": "game-client/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "tsc",
+        "outputPath": "dist/game-client",
+        "index": "game-client/src/index.html",
+        "main": "game-client/src/main.ts",
+        "tsConfig": "game-client/tsconfig.app.json",
+        "assets": [
+          "game-client/src/favicon.ico",
+          "game-client/src/assets"
+        ],
+        "styles": ["game-client/src/styles.css"],
+        "isolatedConfig": true,
+        "webpackConfig": "game-client/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "extractLicenses": true,
+          "optimization": true,
+          "sourceMap": false,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "@game-client:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "@game-client:build:development"
+        },
+        "production": {
+          "buildTarget": "@game-client:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/test-output/jest/game-client"],
+      "options": {
+        "jestConfig": "game-client/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["game-client/**/*.ts"]
+      }
+    }
+  }
+}

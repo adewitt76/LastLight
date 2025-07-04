@@ -1,4 +1,4 @@
-import { Player, GameRoom, GameState } from '@lastlight/shared-models';
+import { Player, GameRoom, GameState, RoomSummary } from '@lastlight/shared-models';
 
 // Client to Server Events
 export interface ClientToServerEvents {
@@ -24,7 +24,7 @@ export interface ServerToClientEvents {
   'room:created': (data: { room: GameRoom; playerId: string }) => void;
   'room:joined': (data: { room: GameRoom; playerId: string }) => void;
   'room:left': () => void;
-  'room:list': (data: { rooms: GameRoom[] }) => void;
+  'room:list': (data: { rooms: RoomSummary[] }) => void;
   'room:player-joined': (data: { player: Player }) => void;
   'room:player-left': (data: { playerId: string }) => void;
   'room:updated': (data: { room: GameRoom }) => void;

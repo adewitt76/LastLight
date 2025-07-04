@@ -24,7 +24,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - **Monorepo:** NX workspace
 - **Backend:** Node.js + Socket.io for real-time multiplayer
-- **Frontend:** Phaser 3.x game engine + HTML5 Canvas
+- **Frontend:** Phaser 3.x game engine + HTML5 Canvas (with integrated lobby)
 - **State Management:** Custom game state + Socket.io events
 - **Database:** In-memory for sessions (Redis later for persistence)
 
@@ -32,9 +32,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```
 apps/
-  game-client/          # Phaser 3 frontend
+  game-client/          # Phaser 3 frontend with integrated lobby
   game-server/          # Socket.io backend
-  lobby-web/            # Web lobby interface
 libs/
   shared/
     game-engine/        # Core game logic
@@ -77,14 +76,12 @@ npm install
 npx nx sync
 
 # Start applications
-npx nx serve game-client    # Phaser 3 game client
+npx nx serve game-client    # Phaser 3 game client (includes lobby)
 npx nx serve game-server    # Socket.io backend server  
-npx nx serve lobby-web      # Web lobby interface
 
 # Build applications
 npx nx build game-client
 npx nx build game-server
-npx nx build lobby-web
 npx nx run-many -t build    # Build all
 
 # Run tests
@@ -112,10 +109,19 @@ See [GAME_PLAN.md](./GAME_PLAN.md) for detailed development phases, milestones, 
 - Use proper package names for imports (e.g., `@lastlight/shared-models` not `@./shared/models`)
 - The workspace will automatically sync TypeScript project references when needed
 
-### Code Organization
+### Code Organization & Architecture
 - **Shared Libraries:** Use for type definitions, networking interfaces, and shared utilities
 - **Import Paths:** Use the full package names defined in package.json for cross-library imports
 - **Event Definitions:** Keep all Socket.io events in `@lastlight/shared-networking` for consistency
+- **Manager Pattern:** Large scenes should be broken down into specialized manager classes for maintainability
+- **Interface-based Callbacks:** Use callback interfaces for loose coupling between managers and scenes
+- **Single Responsibility:** Each manager should handle one specific aspect of game functionality
+
+### TypeScript Configuration
+- **Module System:** Use CommonJS (`"module": "commonjs"`) with ES module interop for Socket.io compatibility
+- **Definite Assignment:** Use `!` assertion for properties initialized in lifecycle methods
+- **Type Safety:** Add proper type checking for Phaser physics bodies and dynamic objects
+- **Error Handling:** Address TypeScript errors systematically to prevent runtime issues
 
 ### Game Development Patterns
 - **Scene Management:** Each major game state (Lobby, Main Game) should be a separate Phaser scene
@@ -158,3 +164,42 @@ See [GAME_PLAN.md](./GAME_PLAN.md) for detailed development phases, milestones, 
 - Prototype-friendly: start with basic graphics, add visual flair later
 - Emphasize the unique decay mechanics that differentiate from Among Us
 - **Phase 1 (MVP Core) is COMPLETE** - ready for Phase 2 (Decay System)
+
+## Major Refactoring History
+
+### Code Organization Improvements (Session January 2025)
+**Problem:** Large monolithic files (400+ line main.ts, 889-line MainScene.ts) were difficult to maintain and debug.
+
+**Solution:** Implemented manager-based architecture with separation of concerns:
+
+#### Server-Side Refactoring (game-server/src/main.ts: 400 → 61 lines)
+- **RoomManager:** Room creation, joining, leaving, and lifecycle management
+- **GameManager:** Game state management, task validation, and win condition checking  
+- **SocketHandlers:** Socket.io event handling and player communication
+
+#### Client-Side Refactoring (game-client/src/game/scenes/MainScene.ts: 889 → 231 lines)
+- **ShipLayoutManager:** Ship visual layout creation and background rendering
+- **PlayerManager:** Player sprite creation, animations, and movement handling
+- **TaskManager:** Task system management, interaction detection, and completion tracking
+- **GameSocketManager:** Socket.io event handling and server communication
+- **GameUI:** User interface creation, updates, and interaction handling
+- **WallCollisionManager:** Physics collision system and maze wall management
+
+#### Architecture Benefits
+- **Maintainability:** Each manager has a single, clear responsibility
+- **Testability:** Smaller, focused classes are easier to unit test
+- **Reusability:** Managers can be used across different scenes
+- **Debugging:** Easier to isolate and fix issues in specific systems
+- **Collaboration:** Multiple developers can work on different managers simultaneously
+
+#### TypeScript Error Resolution
+- Fixed module import conflicts by configuring CommonJS with ES module interop
+- Added proper type assertions for Phaser physics bodies
+- Resolved undefined variable issues with nullish coalescing operators
+- Implemented definite assignment assertions for lifecycle-initialized properties
+- Updated Map iteration patterns for cross-browser compatibility
+
+#### Project Structure Cleanup
+- **Removed lobby-web:** Consolidated to single-client architecture with integrated lobby
+- **Updated Documentation:** All references updated to reflect new architecture
+- **Simplified Development:** Reduced from 3 to 2 applications (game-client + game-server)

@@ -6,6 +6,10 @@
       "jest",
       "node"
     ],
+    "lib": [
+      "es2022",
+      "dom"
+    ],
     "module": "esnext",
     "moduleResolution": "bundler"
   },

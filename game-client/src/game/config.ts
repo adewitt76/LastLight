@@ -4,7 +4,7 @@ import { LobbyScene } from './scenes/LobbyScene';
 
 export const GameConfig: Types.Core.GameConfig = {
   title: 'Last Light',
-  version: '0.1.0',
+  version: '0.2.0',
   width: 1024,
   height: 768,
   type: Phaser.AUTO,

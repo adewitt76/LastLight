@@ -5,6 +5,10 @@
     "types": [
       "node"
     ],
+    "lib": [
+      "es2022",
+      "dom"
+    ],
     "rootDir": "src",
     "module": "esnext",
     "moduleResolution": "bundler",
