@@ -96,7 +96,7 @@ export class MainScene extends Scene implements TaskManagerCallbacks, GameSocket
     this.wasd = this.input.keyboard?.addKeys('W,S,A,D') || null;
 
     // Create UI
-    this.gameUI.setRoom(this.room);
+    this.gameUI.setRoom(this.room, this.playerId);
     this.gameUI.createUI(this.playerId);
 
     // Send initial position to other players
@@ -114,6 +114,11 @@ export class MainScene extends Scene implements TaskManagerCallbacks, GameSocket
 
   // GameSocketCallbacks
   onPlayerJoined(player: Player): void {
+    // Add player to our local room object
+    if (this.room && !this.room.players.some(p => p.id === player.id)) {
+      this.room.players.push(player);
+    }
+    
     this.playerManager.createOtherPlayer(player);
     this.wallCollisionManager.addCollisionForPlayer(this.playerManager.getOtherPlayers().get(player.id)!);
     
@@ -122,10 +127,21 @@ export class MainScene extends Scene implements TaskManagerCallbacks, GameSocket
     if (playerSprite && this.gameSocketManager) {
       this.gameSocketManager.sendCurrentPosition({ x: playerSprite.x, y: playerSprite.y });
     }
+    
+    // Update start button state as player count changed
+    this.gameUI.updateStartButtonState(this.playerId);
   }
 
   onPlayerLeft(playerId: string): void {
+    // Remove player from our local room object
+    if (this.room) {
+      this.room.players = this.room.players.filter(p => p.id !== playerId);
+    }
+    
     this.playerManager.removeOtherPlayer(playerId);
+    
+    // Update start button state as player count changed
+    this.gameUI.updateStartButtonState(this.playerId);
   }
 
   onPlayerMoved(playerId: string, position: { x: number; y: number }): void {
@@ -136,6 +152,10 @@ export class MainScene extends Scene implements TaskManagerCallbacks, GameSocket
     this.gameState = gameState;
     this.taskManager.setGameState(gameState);
     this.updateTaskUI();
+    if (this.room) {
+        this.room.isStarted = true;
+    }
+    this.gameUI.updateStartButtonState(this.playerId);
   }
 
   onTaskCompleted(taskId: string, playerId: string): void {
