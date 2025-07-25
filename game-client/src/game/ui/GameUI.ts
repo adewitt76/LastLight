@@ -108,13 +108,6 @@ export class GameUI {
       backgroundColor: '#000000',
       padding: { x: 8, y: 4 }
     }).setOrigin(1, 0).setScrollFactor(0); // Fixed to camera
-
-    this.currentTaskText = this.scene.add.text(width / 2, height - 40, '', {
-      fontSize: '14px',
-      color: '#ffeb3b',
-      backgroundColor: '#000000',
-      padding: { x: 8, y: 4 }
-    }).setOrigin(0.5).setScrollFactor(0); // Fixed to camera
   }
 
   updateStartButtonState(playerId?: string): void {
