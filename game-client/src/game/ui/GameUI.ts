@@ -108,13 +108,41 @@ export class GameUI {
       backgroundColor: '#000000',
       padding: { x: 8, y: 4 }
     }).setOrigin(1, 0).setScrollFactor(0); // Fixed to camera
+  }
 
-    this.currentTaskText = this.scene.add.text(width / 2, height - 40, '', {
-      fontSize: '14px',
-      color: '#ffeb3b',
-      backgroundColor: '#000000',
-      padding: { x: 8, y: 4 }
-    }).setOrigin(0.5).setScrollFactor(0); // Fixed to camera
+  updateStartButtonState(playerId?: string): void {
+    const hasEnoughPlayers = this.room?.players.length > 1;
+    const gameNotStarted = !this.room?.isStarted;
+    const isHost = playerId ? this.room?.hostPlayerId === playerId : false;
+    
+    // Update player count display
+    this.updatePlayerCount();
+    
+    // If game started, hide the button for everyone
+    if (!gameNotStarted) {
+      if (this.startButton) this.startButton.setVisible(false);
+      if (this.startButtonText) this.startButtonText.setVisible(false);
+      return;
+    }
+    
+    // Always show the button, but control interactivity
+    if (this.startButton && this.startButtonText) {
+      // Make sure button is visible for everyone when game not started
+      this.startButton.setVisible(true);
+      this.startButtonText.setVisible(true);
+      
+      if (hasEnoughPlayers && isHost) {
+        // Enable button for host only when enough players
+        this.startButton.setFillStyle(0xff6b6b, 0.8);
+        this.startButton.disableInteractive().setInteractive({ useHandCursor: true });
+        this.startButtonText.setColor('#ffffff');
+      } else {
+        // Disable button - show grayed out
+        this.startButton.setFillStyle(0x999999, 0.5);
+        this.startButton.disableInteractive();
+        this.startButtonText.setColor('#cccccc');
+      }
+    }
   }
 
   updateStartButtonState(playerId?: string): void {
