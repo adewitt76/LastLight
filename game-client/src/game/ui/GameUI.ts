@@ -11,6 +11,9 @@ export class GameUI {
   private room: GameRoom | null = null;
   private tasksCompletedText: Phaser.GameObjects.Text | null = null;
   private currentTaskText: Phaser.GameObjects.Text | null = null;
+  private startButton: Phaser.GameObjects.Rectangle | null = null;
+  private startButtonText: Phaser.GameObjects.Text | null = null;
+  private playerCountText: Phaser.GameObjects.Text | null = null;
   private callbacks: GameUICallbacks;
 
   constructor(scene: Scene, callbacks: GameUICallbacks) {
@@ -18,8 +21,15 @@ export class GameUI {
     this.callbacks = callbacks;
   }
 
-  setRoom(room: GameRoom | null): void {
+  setRoom(room: GameRoom | null, playerId?: string): void {
     this.room = room;
+    this.updateStartButtonState(playerId);
+  }
+  
+  updatePlayerCount(): void {
+    if (this.playerCountText && this.room) {
+      this.playerCountText.setText(`Players: ${this.room.players.length}/${this.room.maxPlayers}`);
+    }
   }
 
   createUI(playerId: string): void {
@@ -33,7 +43,7 @@ export class GameUI {
       padding: { x: 8, y: 4 }
     }).setScrollFactor(0); // Fixed to camera
 
-    this.scene.add.text(10, 40, `Players: ${this.room?.players.length || 0}/${this.room?.maxPlayers || 0}`, {
+    this.playerCountText = this.scene.add.text(10, 40, `Players: ${this.room?.players.length || 0}/${this.room?.maxPlayers || 0}`, {
       fontSize: '16px',
       color: '#ffffff',
       backgroundColor: '#000000',
@@ -56,20 +66,39 @@ export class GameUI {
       color: '#cccccc'
     }).setScrollFactor(0);
 
-    // Add start game button for host (if game not started) - fixed to camera
-    if (this.room?.hostPlayerId === playerId && !this.room?.isStarted) {
-      const startButton = this.scene.add.rectangle(width - 120, height - 50, 100, 40, 0xff6b6b, 0.8)
-        .setInteractive({ useHandCursor: true })
-        .on('pointerdown', () => this.callbacks.onStartGame())
-        .on('pointerover', () => startButton.setAlpha(1))
-        .on('pointerout', () => startButton.setAlpha(0.8))
+    // Add start game button for all players (if game not started) - fixed to camera
+    if (!this.room?.isStarted) {
+      this.startButton = this.scene.add.rectangle(width - 120, height - 50, 100, 40, 0xff6b6b, 0.8)
         .setScrollFactor(0); // Fixed to camera
+      
+      // Only make it interactive for host
+      if (this.room?.hostPlayerId === playerId) {
+        this.startButton
+          .setInteractive({ useHandCursor: true })
+          .on('pointerdown', () => this.callbacks.onStartGame());
+      }
+      
+      // Add hover effects that work when button is interactive
+      this.startButton
+        .on('pointerover', () => {
+          if (this.startButton?.input?.enabled) {
+            this.startButton?.setAlpha(1);
+          }
+        })
+        .on('pointerout', () => {
+          if (this.startButton?.input?.enabled) {
+            this.startButton?.setAlpha(0.8);
+          }
+        });
 
-      this.scene.add.text(width - 120, height - 50, 'START GAME', {
+      this.startButtonText = this.scene.add.text(width - 120, height - 50, 'START GAME', {
         fontSize: '12px',
         color: '#ffffff',
         fontFamily: 'Arial, sans-serif'
       }).setOrigin(0.5).setScrollFactor(0); // Fixed to camera
+      
+      // Initialize button state based on player count
+      this.updateStartButtonState(playerId);
     }
 
     // Task UI - fixed to camera
@@ -86,6 +115,41 @@ export class GameUI {
       backgroundColor: '#000000',
       padding: { x: 8, y: 4 }
     }).setOrigin(0.5).setScrollFactor(0); // Fixed to camera
+  }
+
+  updateStartButtonState(playerId?: string): void {
+    const hasEnoughPlayers = this.room?.players.length > 1;
+    const gameNotStarted = !this.room?.isStarted;
+    const isHost = playerId ? this.room?.hostPlayerId === playerId : false;
+    
+    // Update player count display
+    this.updatePlayerCount();
+    
+    // If game started, hide the button for everyone
+    if (!gameNotStarted) {
+      if (this.startButton) this.startButton.setVisible(false);
+      if (this.startButtonText) this.startButtonText.setVisible(false);
+      return;
+    }
+    
+    // Always show the button, but control interactivity
+    if (this.startButton && this.startButtonText) {
+      // Make sure button is visible for everyone when game not started
+      this.startButton.setVisible(true);
+      this.startButtonText.setVisible(true);
+      
+      if (hasEnoughPlayers && isHost) {
+        // Enable button for host only when enough players
+        this.startButton.setFillStyle(0xff6b6b, 0.8);
+        this.startButton.disableInteractive().setInteractive({ useHandCursor: true });
+        this.startButtonText.setColor('#ffffff');
+      } else {
+        // Disable button - show grayed out
+        this.startButton.setFillStyle(0x999999, 0.5);
+        this.startButton.disableInteractive();
+        this.startButtonText.setColor('#cccccc');
+      }
+    }
   }
 
   updateTaskUI(completedTasks: number, totalTasks: number, nearbyTask: Task | null): void {
